@@ -1,0 +1,6 @@
+[submodule "v2-cnb-ruby-buildpack"]
+	path = v2-cnb-ruby-buildpack
+	url = git@github.com:Gerg/v2-cnb-ruby-buildpack.git
+[submodule "cf-acceptance-tests"]
+	path = cf-acceptance-tests
+	url = git@github.com:cloudfoundry/cf-acceptance-tests.git
