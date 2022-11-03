@@ -1,8 +1,11 @@
-FROM cloudfoundry/cflinuxfs4
+FROM cloudfoundry/cflinuxfs3
+USER vcap
 RUN mkdir -p /tmp/app
-RUN mkdir -p /tmp/cache/final
-RUN mkdir -p /tmp/contents3205658702/deps
-WORKDIR /app
-COPY . .
+RUN mkdir -p /tmp/whatever/deps
+RUN mkdir -p /tmp/buildpacks/whatever
+RUN mkdir -p /tmp/whatever/profile.d
+WORKDIR /home/vcap
+COPY ./run.sh /tmp/run.sh
 COPY ./cf-acceptance-tests/assets/dora/* /tmp/app
-CMD ["./v2-cnb-ruby-buildpack/bin/finalize", "/tmp/app", "/tmp/cache/final", "/tmp/contents3205658702/deps", "0"]
+COPY ./v2-cnb-ruby-buildpack/* /tmp/buildpacks/whatever
+CMD ["/tmp/run.sh"]
